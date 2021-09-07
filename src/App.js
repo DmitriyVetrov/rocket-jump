@@ -32,20 +32,12 @@ class App extends Component {
         <button onClick={this.handleButton.bind(this, "(changed by main btn)")}>
           Changer
         </button>
-        <Realt
-          name={this.state.flats[0].addres}
-          onChangeRealt={this.handleButton}
-        ></Realt>
-        <Realt
-          name={this.state.flats[1].addres}
-          onChangeRealt={() => {
-            this.handleButton(this.state.flats[1].addres);
-          }}
-        ></Realt>
-        <Realt
-          name={this.state.flats[2].addres}
-          onChangeRealt={this.handleButton}
-        ></Realt>
+
+        {this.state.flats.map((f, i) => {
+          return (
+            <Realt name={f.addres} key={i} onChangeRealt={this.handleButton} />
+          );
+        })}
       </div>
     );
   }
