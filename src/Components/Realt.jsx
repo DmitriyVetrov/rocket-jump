@@ -6,16 +6,10 @@ function Realt(props) {
     <>
       <div className={classes.item}>
         {props.name}
-        <p>
-          <button
-            onClick={props.onChangeRealt.bind(
-              props.onChangeRealt,
-              "Changed by " + props.name
-            )}
-          >
-            Click
-          </button>
-        </p>
+        <br />
+        <input type='text' onChange={props.changeFlatAddress} />
+        <br />
+        <button onClick={props.removeFlat}>Remove</button>
       </div>
     </>
   );
