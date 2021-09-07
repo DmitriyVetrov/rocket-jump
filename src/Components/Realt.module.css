@@ -1,0 +1,9 @@
+.item {
+  text-align: center;
+  width: 100px;
+  height: 100px;
+  margin: 5px;
+  border-color: aquamarine;
+  border-width: 2px;
+  border-style: solid;
+}
