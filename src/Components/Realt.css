@@ -1,0 +1,22 @@
+.item {
+  text-align: center;
+  width: 200px;
+  height: 100px;
+  margin: 5px;
+  border: 2px solid tomato;
+  border-radius: 5px;
+}
+
+.input {
+  border-radius: 2px;
+}
+.input:active,
+.input:focus {
+  outline: none;
+}
+.green {
+  border: 2px solid green;
+}
+.red {
+  border: 2px solid red;
+}

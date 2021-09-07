@@ -8,19 +8,19 @@ class App extends Component {
     flats: [
       { address: "Haanova 44", square: "72" },
       { address: "Sustekova 7", square: "29" },
-      { address: "Guadamar", square: "61" },
+      { address: "Guadamar del Segura", square: "61" },
     ],
     pageTitle: "RealEstate Agency",
     showFlats: false,
   };
   handle(ind, newAddress) {
-    const tempflats = [...this.state.flats];
+    const tempflats = this.state.flats.concat();
     tempflats[ind].address = newAddress;
     this.setState({ flats: tempflats });
   }
 
   removeFlat(ind) {
-    const temp = [...this.state.flats];
+    const temp = this.state.flats.concat();
     temp.splice(ind, 1);
     this.setState({
       flats: temp,
@@ -44,7 +44,13 @@ class App extends Component {
     }
 
     return (
-      <div className='App'>
+      <div
+        style={{
+          width: 400,
+          margin: "auto",
+          paddingTop: 20,
+        }}
+      >
         <h1>{this.state.pageTitle}</h1>
 
         <button
