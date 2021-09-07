@@ -11,33 +11,37 @@ class App extends Component {
       { addres: "Guadamar", square: "61" },
     ],
     pageTitle: "RealEstate Agency",
-  };
-
-  handleButton = (newTitle) => {
-    this.setState({ pageTitle: newTitle });
+    showFlats: false,
   };
 
   render() {
-    console.log("Render");
+    let flats = null;
+
+    if (this.state.showFlats) {
+      flats = this.state.flats.map((f, i) => {
+        return (
+          <Realt
+            name={f.addres}
+            key={i}
+            onChangeRealt={() => {
+              this.setState({ pageTitle: "changed from " + f.addres });
+            }}
+          />
+        );
+      });
+    }
+
     return (
       <div className='App'>
         <h1>{this.state.pageTitle}</h1>
 
-        <input
-          type='text'
-          onChange={(e) => {
-            this.setState({ pageTitle: e.target.value });
-          }}
-        />
-        <button onClick={this.handleButton.bind(this, "(changed by main btn)")}>
-          Changer
+        <button
+          onClick={() => this.setState({ showFlats: !this.state.showFlats })}
+        >
+          {this.state.showFlats ? "Hide Flats" : "Show Flats"}
         </button>
 
-        {this.state.flats.map((f, i) => {
-          return (
-            <Realt name={f.addres} key={i} onChangeRealt={this.handleButton} />
-          );
-        })}
+        {flats}
       </div>
     );
   }
