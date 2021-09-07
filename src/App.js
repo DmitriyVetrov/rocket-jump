@@ -13,10 +13,7 @@ class App extends Component {
     pageTitle: "RealEstate Agency",
   };
 
-  handleButton = () => {
-    console.log(1);
-    const oldTitle = this.state.pageTitle;
-    const newTitle = oldTitle + " (changed)";
+  handleButton = (newTitle) => {
     this.setState({ pageTitle: newTitle });
   };
 
@@ -24,12 +21,31 @@ class App extends Component {
     console.log("Render");
     return (
       <div className='App'>
-        <h1>{this.state.pageTitle.toString()}</h1>
+        <h1>{this.state.pageTitle}</h1>
 
-        <button onClick={this.handleButton}>Changer</button>
-        <Realt name={this.state.flats[0].addres}></Realt>
-        <Realt name={this.state.flats[1].addres}></Realt>
-        <Realt name={this.state.flats[2].addres}></Realt>
+        <input
+          type='text'
+          onChange={(e) => {
+            this.setState({ pageTitle: e.target.value });
+          }}
+        />
+        <button onClick={this.handleButton.bind(this, "(changed by main btn)")}>
+          Changer
+        </button>
+        <Realt
+          name={this.state.flats[0].addres}
+          onChangeRealt={this.handleButton}
+        ></Realt>
+        <Realt
+          name={this.state.flats[1].addres}
+          onChangeRealt={() => {
+            this.handleButton(this.state.flats[1].addres);
+          }}
+        ></Realt>
+        <Realt
+          name={this.state.flats[2].addres}
+          onChangeRealt={this.handleButton}
+        ></Realt>
       </div>
     );
   }
