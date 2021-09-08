@@ -1,0 +1,16 @@
+.Quiz {
+  display: flex;
+  justify-content: center;
+  padding-top: 100px;
+  flex-grow: 1;
+  width: 100%;
+  background: radial-gradient(circle at left top, #666, #444 50%);
+}
+
+.Quiz h1 {
+  color: aqua;
+}
+
+.QuizWrapper {
+  width: 600px;
+}

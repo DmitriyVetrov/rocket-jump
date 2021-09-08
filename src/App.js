@@ -1,66 +1,13 @@
-//import logo from "./logo.svg";
-import "./App.css";
 import React, { Component } from "react";
-import Realt from "./Components/Realt";
+import Quiz from "./Containers/Quiz/Quiz";
+import Layout from "./hoc/Layout/Layout";
 
 class App extends Component {
-  state = {
-    flats: [
-      { address: "Haanova 44", square: "72" },
-      { address: "Sustekova 7", square: "29" },
-      { address: "Guadamar del Segura", square: "61" },
-    ],
-    pageTitle: "RealEstate Agency",
-    showFlats: false,
-  };
-  handle(ind, newAddress) {
-    const tempflats = this.state.flats.concat();
-    tempflats[ind].address = newAddress;
-    this.setState({ flats: tempflats });
-  }
-
-  removeFlat(ind) {
-    const temp = this.state.flats.concat();
-    temp.splice(ind, 1);
-    this.setState({
-      flats: temp,
-    });
-  }
-
   render() {
-    let flats = null;
-
-    if (this.state.showFlats) {
-      flats = this.state.flats.map((f, i) => {
-        return (
-          <Realt
-            name={f.address}
-            key={i}
-            changeFlatAddress={(event) => this.handle(i, event.target.value)}
-            removeFlat={this.removeFlat.bind(this, i)}
-          />
-        );
-      });
-    }
-
     return (
-      <div
-        style={{
-          width: 400,
-          margin: "auto",
-          paddingTop: 20,
-        }}
-      >
-        <h1>{this.state.pageTitle}</h1>
-
-        <button
-          onClick={() => this.setState({ showFlats: !this.state.showFlats })}
-        >
-          {this.state.showFlats ? "Hide Flats" : "Show Flats"}
-        </button>
-
-        {flats}
-      </div>
+      <Layout>
+        <Quiz></Quiz>
+      </Layout>
     );
   }
 }
